@@ -236,3 +236,26 @@ Each use case can be implemented by:
 ## License
 
 MIT
+
+<!-- ARCH-DIAGRAM:START -->
+
+## Architecture
+
+> Auto-generated architecture diagram. See [`docs/context-map.md`](docs/context-map.md) for the full context map (core application, containers/cloud, and database connections).
+
+```mermaid
+flowchart TD
+  User([User / Client])
+  UI["Frontend<br/>React"]
+  App["my-chat-agent<br/><small>server.ts</small><br/>Express / Node"]
+  SVC0["Cloudflare Workers"]
+  TF["Terraform<br/>(infra)"]
+  Deploy["Cloudflare Workers"]
+  User --> UI
+  UI --> App
+  App --> SVC0
+  App -.deploy.-> TF
+  TF -.deploy.-> Deploy
+```
+
+<!-- ARCH-DIAGRAM:END -->
